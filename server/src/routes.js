@@ -6,6 +6,7 @@ const Blog = require('./models/Blog.js');
 
 let multer = require("multer")
 
+
 // upload section
 let storage = multer.diskStorage({
     destination: function (req, file, callback) {
