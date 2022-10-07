@@ -2,10 +2,11 @@ const UserController = require('./controllers/UserController.js');
 const UserAuthenController = require('./controllers/UserAuthenController');
 const isAuthenController = require('./authen/isAuthenController')
 const BlogController = require('./controllers/BlogController');
+const foodController = require('/controllers/foodController');
 const Blog = require('./models/Blog.js');
+const food = require('./models/food.js');
 
 let multer = require("multer")
-
 
 // upload section
 let storage = multer.diskStorage({
@@ -28,11 +29,19 @@ module.exports = (app) => {
     app.get('/user/:userId', UserController.show)
     app.get('/users', isAuthenController, UserController.index)
     app.post('/login', UserAuthenController.login)
+
     app.post('/blog', BlogController.create)
     app.put('/blog/:blogId', BlogController.put)
     app.delete('/blog/:blogId', BlogController.remove)
     app.get('/blog/:blogId', BlogController.show)
     app.get('/blogs', BlogController.index)
+
+    app.post('/food', foodController.create)
+    app.put('/food/:foodId', foodController.put)
+    app.delete('/food/:foodId', foodController.remove)
+    app.get('/food/:foodId', foodController.show)
+    app.get('/food', foodController.index)
+
     app.post('/upload', function (req, res) {
         upload(req, res, function (err) {
             // isUserAuthenicated,
