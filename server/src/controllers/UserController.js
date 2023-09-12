@@ -12,6 +12,7 @@ module.exports = {
     }
   },
 
+  //------------------------------ database management code -----------------------------------------//
   async create (req, res) {
     // res.send(JSON.stringify(req.body))
     try {
@@ -60,6 +61,7 @@ module.exports = {
     }
   },
 
+  //------------------------------ database management code -----------------------------------------//
   async show (req, res) {
     try {
       const user = await User.findByPk(req.params.userId)
